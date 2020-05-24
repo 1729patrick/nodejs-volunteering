@@ -22,10 +22,9 @@ spec:
         app: api
         tier: backend
     spec:
-      terminationGracePeriodSeconds: 30
       containers:
         - name: api
-          image: gcr.io/voluntaring/api:$GITHUB_SHA
+          image: gcr.io/voluntaring/api:latest
           imagePullPolicy: Always
           ports:
             - containerPort: 3333
