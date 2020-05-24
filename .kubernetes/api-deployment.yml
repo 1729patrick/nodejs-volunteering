@@ -24,7 +24,7 @@ spec:
     spec:
       containers:
         - name: api
-          image: gcr.io/voluntaring/api:latest
+          image: gcr.io/voluntaring/api:4.0
           imagePullPolicy: Always
           ports:
             - containerPort: 3333
