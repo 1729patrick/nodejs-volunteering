@@ -1,5 +1,6 @@
 ﻿apiVersion: apps/v1
 kind: Deployment
+
 metadata:
   name: api
   labels:
@@ -21,9 +22,11 @@ spec:
         app: api
         tier: backend
     spec:
+      terminationGracePeriodSeconds: 30
       containers:
         - name: api
-          image: gcr.io/voluntaring/api:3.0
+          image: gcr.io/voluntaring/api:$GITHUB_SHA
+          imagePullPolicy: Always
           ports:
             - containerPort: 3333
           resources:
