@@ -1,0 +1,52 @@
+{
+  "type": "object",
+  "title": "Projects",
+  "properties": {
+    "name": {
+      "type": "string"
+    },
+    "summary": {
+      "type": "string"
+    },
+    "intervation_area": {
+      "type": "string"
+    },
+    "target_audience": {
+      "type": "string"
+    },
+    "goals": {
+      "type": "string"
+    },
+    "required_course": {
+      "type": "string"
+    },
+    "entities": {
+      "type": "string"
+    },
+    "observations": {
+      "type": "string"
+    },
+    "is_active": {
+      "type": "boolean",
+      "default": false
+    },
+    "is_approved": {
+      "type": "boolean",
+      "default": false
+    }
+  },
+  "required": [
+    "name",
+    "summary",
+    "intervation_area",
+    "target_audience",
+    "is_active",
+    "is_approved"
+  ],
+  "references": [
+    {
+      "model": "Image",
+      "relation": "M-1"
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "type": "object",
+  "title": "ProjectMembers",
+  "properties": {
+    "privacity": {
+      "type": "string"
+    },
+    "is_owner": {
+      "type": "boolean",
+      "default": false
+    }
+  },
+  "required": [
+    "privacity",
+    "is_owner"
+  ],
+  "references": [
+    {
+      "model": "User",
+      "relation": "M-1"
+    },
+    {
+      "model": "Project",
+      "relation": "M-1"
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "type": "object",
+  "title": "ProjectActivities",
+  "properties": {
+    "name": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "name",
+    "description"
+  ],
+  "references": [
+    {
+      "model": "Project",
+      "relation": "M-1"
+    }
+  ]
+}

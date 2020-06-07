@@ -1,0 +1,17 @@
+{
+  "type": "object",
+  "title": "MotivationAreas",
+  "properties": {
+    "description": {
+      "type": "string"
+    },
+    "is_active": {
+      "type": "boolean",
+      "default": false
+    }
+  },
+  "required": [
+    "description",
+    "is_active"
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "type": "object",
+  "title": "Images",
+  "properties": {
+    "name": {
+      "type": "string"
+    },
+    "path": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "name",
+    "path"
+  ]
+}

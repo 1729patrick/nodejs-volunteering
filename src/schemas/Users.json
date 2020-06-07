@@ -1,0 +1,60 @@
+{
+  "type": "object",
+  "title": "Users",
+  "properties": {
+    "name": {
+      "type": "string"
+    },
+    "email": {
+      "type": "string"
+    },
+    "password": {
+      "type": "string"
+    },
+    "phone": {
+      "type": "string"
+    },
+    "city": {
+      "type": "string"
+    },
+    "date_of_birth": {
+      "type": "string"
+    },
+    "status": {
+      "type": "string"
+    },
+    "school": {
+      "type": "string"
+    },
+    "course": {
+      "type": "string"
+    },
+    "observations": {
+      "type": "string"
+    },
+    "is_admin": {
+      "type": "boolean",
+      "default": false
+    },
+    "privacity": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "name",
+    "email",
+    "password",
+    "phone",
+    "city",
+    "date_of_birth",
+    "status",
+    "is_admin",
+    "privacity"
+  ],
+  "references": [
+    {
+      "model": "Company",
+      "relation": "M-1"
+    }
+  ]
+}

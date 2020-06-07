@@ -1,0 +1,26 @@
+{
+  "type": "object",
+  "title": "ProjectDates",
+  "properties": {
+    "start": {
+      "type": "date"
+    },
+    "end": {
+      "type": "date"
+    },
+    "type": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "start",
+    "end",
+    "type"
+  ],
+  "references": [
+    {
+      "model": "Project",
+      "relation": "M-1"
+    }
+  ]
+}

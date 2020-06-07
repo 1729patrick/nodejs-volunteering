@@ -1,0 +1,16 @@
+{
+  "type": "object",
+  "title": "UserMotivationAreas",
+  "properties": {},
+  "required": [],
+  "references": [
+    {
+      "model": "User",
+      "relation": "M-1"
+    },
+    {
+      "model": "MotivationArea",
+      "relation": "M-1"
+    }
+  ]
+}

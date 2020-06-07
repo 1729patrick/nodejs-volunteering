@@ -1,0 +1,20 @@
+{
+  "type": "object",
+  "title": "UserProjectVoluntaryAreas",
+  "properties": {},
+  "required": [],
+  "references": [
+    {
+      "model": "VoluntaryArea",
+      "relation": "M-1"
+    },
+    {
+      "model": "Project",
+      "relation": "M-1"
+    },
+    {
+      "model": "User",
+      "relation": "M-1"
+    }
+  ]
+}
