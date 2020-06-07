@@ -7,7 +7,7 @@ class ImagesController {
     const images = await images_.findAll();
     const columns = images_.columns;
 
-    return res.json({ columns, imagess });
+    return res.json({ columns, images });
   }
 
   async store(req, res) {

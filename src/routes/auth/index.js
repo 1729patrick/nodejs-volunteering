@@ -1,9 +1,11 @@
 import { Router } from 'express';
 
-import GeneratorController from '../../app/controllers/GeneratorController';
+import SessionsRoutes from './sessions.routes';
+import UsersRoutes from './users.routes';
 
 const router = Router();
 
-router.post('/generators', GeneratorController.store);
+router.use(SessionsRoutes);
+router.use(UsersRoutes);
 
 export default router;
