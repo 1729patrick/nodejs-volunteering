@@ -126,9 +126,9 @@ CREATE TABLE "public"."Projects" (
     "required_course" varchar(255),
     "entities" varchar(255),
     "observations" varchar(255),
-    "is_active" bool NOT NULL,
-    "is_approved" bool NOT NULL,
-    "image_id" int4 NOT NULL,
+    "is_active" bool NOT NULL DEFAULT TRUE,
+    "is_approved" bool NOT NULL DEFAULT FALSE,
+    "image_id" int4,
     "created_at" timestamptz NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updated_at" timestamptz,
     PRIMARY KEY ("id")
