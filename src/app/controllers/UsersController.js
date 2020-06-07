@@ -1,3 +1,5 @@
+import jwt from 'jsonwebtoken';
+import authConfig from '../../config/auth';
 import Users from '../models/Users';
 
 class UsersController {
@@ -16,9 +18,25 @@ class UsersController {
         return res.status(400).json({ error: 'Invalid parameters' });
       }
 
-      const users = await new Users(req.body).insert();
+      const [id] = await new Users(req.body).insert();
 
-      return res.json(users);
+      const [user] = await new Users().findBy({ id });
+
+      const token = jwt.sign(
+        {
+          userId: user.id,
+          isAdmin: user.is_admin,
+        },
+        authConfig.secret,
+        {
+          expiresIn: authConfig.expiresIn,
+        }
+      );
+
+      return res.json({
+        user,
+        token,
+      });
     } catch ({ message }) {
       return res.status(400).json({ error: message });
     }
