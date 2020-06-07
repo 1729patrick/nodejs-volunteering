@@ -1,4 +1,5 @@
 import Projects from '../models/Projects';
+import ProjectDates from '../models/ProjectDates';
 
 class ProjectsController {
   async index(_, res) {
@@ -16,9 +17,15 @@ class ProjectsController {
         return res.status(400).json({ error: 'Invalid parameters' });
       }
 
-      const projects = await new Projects(req.body).insert();
+      const { start, end, ...project } = req.body;
+      const [project_id] = await new Projects({
+        ...project,
+        user_id: req.userId,
+      }).insert();
 
-      return res.json(projects);
+      await new ProjectDates({ type: 'A', start, end, project_id }).insert();
+
+      return res.json(project_id);
     } catch ({ message }) {
       return res.status(400).json({ error: message });
     }

@@ -2,7 +2,7 @@
   "type": "object",
   "title": "ProjectMembers",
   "properties": {
-    "privacity": {
+    "privacy": {
       "type": "string"
     },
     "is_owner": {
@@ -10,10 +10,7 @@
       "default": false
     }
   },
-  "required": [
-    "privacity",
-    "is_owner"
-  ],
+  "required": ["privacy", "is_owner"],
   "references": [
     {
       "model": "User",

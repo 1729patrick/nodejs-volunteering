@@ -129,6 +129,7 @@ CREATE TABLE "public"."Projects" (
     "is_active" bool NOT NULL DEFAULT TRUE,
     "is_approved" bool NOT NULL DEFAULT FALSE,
     "image_id" int4,
+    "user_id" int4,
     "created_at" timestamptz NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updated_at" timestamptz,
     PRIMARY KEY ("id")
