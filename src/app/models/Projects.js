@@ -36,20 +36,7 @@ class Projects extends Model {
     ];
   }
 
-  findAll() {
-    let join = (database, tableName) =>
-      database
-        .select([
-          'Projects.*',
-          'Users.name as owner_name',
-          'ProjectDates.start',
-          'ProjectDates.end',
-        ])
-        .from(tableName)
-        .leftJoin('Users', 'Users.id', 'Projects.user_id')
-        .leftJoin('ProjectDates', 'ProjectDates.project_id', 'Projects.id')
-        .orderBy('ProjectDates.end', 'asc');
-
+  findAll(join) {
     return super.findAll(join);
   }
 }

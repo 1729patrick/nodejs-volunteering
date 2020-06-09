@@ -18,7 +18,7 @@ class UsersController {
         return res.status(400).json({ error: 'Invalid parameters' });
       }
 
-      const [id] = await new Users(req.body).insert();
+      const [id] = await new Users({ ...req.body, is_admin: false }).insert();
 
       const [user] = await new Users().findBy({ id });
 

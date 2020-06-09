@@ -2,10 +2,68 @@ import Projects from '../models/Projects';
 import ProjectDates from '../models/ProjectDates';
 
 class ProjectsController {
-  async index(_, res) {
+  async index(req, res) {
+    const { type } = req.params;
     const projects_ = new Projects();
 
-    const projects = await projects_.findAll();
+    let join = (database, tableName) =>
+      database
+        .select([
+          'Projects.*',
+          'Users.name as owner_name',
+          'ProjectDates.start',
+          'ProjectDates.end',
+          'ProjectMembers.id as patrick',
+        ])
+        .from(tableName)
+        .leftJoin('Users', 'Users.id', 'Projects.user_id')
+        .leftJoin('ProjectDates', 'ProjectDates.project_id', 'Projects.id')
+        .innerJoin('ProjectMembers', function () {
+          this.on('ProjectMembers.project_id', '=', 'Projects.id').andOn(
+            'ProjectMembers.user_id',
+            '=',
+            req.userId
+          );
+        })
+        .orderBy('ProjectDates.end', 'asc');
+
+    if (type === 'all') {
+      join = (database, tableName) =>
+        database
+          .select([
+            'Projects.*',
+            'Users.name as owner_name',
+            'ProjectDates.start',
+            'ProjectDates.end',
+          ])
+          .from(tableName)
+          .leftJoin('Users', 'Users.id', 'Projects.user_id')
+          .leftJoin('ProjectDates', 'ProjectDates.project_id', 'Projects.id')
+          .orderBy('ProjectDates.end', 'asc');
+    } else if (type === 'open') {
+      join = (database, tableName) =>
+        database
+          .select([
+            'Projects.*',
+            'Users.name as owner_name',
+            'ProjectDates.start',
+            'ProjectDates.end',
+          ])
+          .whereNull('ProjectMembers.id')
+          .from(tableName)
+          .leftJoin('Users', 'Users.id', 'Projects.user_id')
+          .leftJoin('ProjectDates', 'ProjectDates.project_id', 'Projects.id')
+          .leftJoin('ProjectMembers', function () {
+            this.on('ProjectMembers.project_id', '=', 'Projects.id').andOn(
+              'ProjectMembers.user_id',
+              '=',
+              req.userId
+            );
+          })
+          .orderBy('ProjectDates.end', 'asc');
+    }
+
+    const projects = await projects_.findAll(join);
     const columns = projects_.columns;
 
     return res.json({ columns, projects });

@@ -16,7 +16,11 @@ class ProjectMembersController {
         return res.status(400).json({ error: 'Invalid parameters' });
       }
 
-      const projectmembers = await new ProjectMembers(req.body).insert();
+      const projectmembers = await new ProjectMembers({
+        ...req.body,
+        user_id: req.userId,
+        is_owner: false,
+      }).insert();
 
       return res.json(projectmembers);
     } catch ({ message }) {
