@@ -104,7 +104,7 @@ class ProjectsController {
 
       const projects = await new Projects().update(
         { id: projectsId },
-        req.body
+        { ...req.body, updated_at: new Date() }
       );
 
       return res.json(projects);

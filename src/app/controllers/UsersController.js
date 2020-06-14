@@ -48,9 +48,7 @@ class UsersController {
         return res.status(400).json({ error: 'Invalid parameters' });
       }
 
-      const { usersId } = req.params;
-
-      const users = await new Users().update({ id: usersId }, req.body);
+      const users = await new Users().update({ id: req.userId }, req.body);
 
       return res.json(users);
     } catch ({ message }) {
