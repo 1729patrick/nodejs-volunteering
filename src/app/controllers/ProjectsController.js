@@ -6,6 +6,8 @@ class ProjectsController {
     const { type } = req.params;
     const projects_ = new Projects();
 
+    const where = req.isAdmin ? {} : { is_active: true, is_approved: true };
+
     let join = (database, tableName) =>
       database
         .select([
@@ -16,6 +18,7 @@ class ProjectsController {
           'ProjectMembers.id as patrick',
         ])
         .from(tableName)
+        .where(where)
         .leftJoin('Users', 'Users.id', 'Projects.user_id')
         .leftJoin('ProjectDates', 'ProjectDates.project_id', 'Projects.id')
         .innerJoin('ProjectMembers', function () {
@@ -37,6 +40,7 @@ class ProjectsController {
             'ProjectDates.end',
           ])
           .from(tableName)
+          .where(where)
           .leftJoin('Users', 'Users.id', 'Projects.user_id')
           .leftJoin('ProjectDates', 'ProjectDates.project_id', 'Projects.id')
           .orderBy('ProjectDates.end', 'asc');
@@ -50,6 +54,7 @@ class ProjectsController {
             'ProjectDates.end',
           ])
           .whereNull('ProjectMembers.id')
+          .where(where)
           .from(tableName)
           .leftJoin('Users', 'Users.id', 'Projects.user_id')
           .leftJoin('ProjectDates', 'ProjectDates.project_id', 'Projects.id')
