@@ -8,6 +8,7 @@ import ProjectsRoutes from './projects.routes';
 import MotivationAreasRoutes from './motivationareas.routes';
 import VoluntaryAreasRoutes from './voluntaryareas.routes';
 import ImagesRoutes from './images.routes';
+import RankingRoutes from './ranking.routes';
 
 export default [
   ImagesRoutes,
@@ -20,4 +21,6 @@ export default [
   CompaniesRoutes,
   ProjectMembersRoutes,
   UserMotivationAreasRoutes,
+  UserMotivationAreasRoutes,
+  RankingRoutes,
 ];

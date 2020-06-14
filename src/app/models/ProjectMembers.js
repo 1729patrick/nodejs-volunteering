@@ -21,10 +21,7 @@ class ProjectMembers extends Model {
     ];
   }
 
-  findAll() {
-    let join = (database, tableName) =>
-      database.select(['ProjectMembers.*']).from(tableName);
-
+  findAll(join) {
     return super.findAll(join);
   }
 }

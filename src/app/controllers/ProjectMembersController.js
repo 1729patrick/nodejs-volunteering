@@ -49,9 +49,9 @@ class ProjectMembersController {
 
   async delete(req, res) {
     try {
-      const { projectmembersId } = req.params;
+      const { project_id } = req.params;
 
-      await new ProjectMembers().delete({ id: projectmembersId });
+      await new ProjectMembers().delete({ user_id: req.userId, project_id });
 
       return res.send();
     } catch ({ message }) {

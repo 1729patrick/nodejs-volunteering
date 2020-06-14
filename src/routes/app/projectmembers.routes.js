@@ -14,9 +14,6 @@ router.put(
   '/projectmembers/:projectmembersId',
   ProjectMembersController.update
 );
-router.delete(
-  '/projectmembers/:projectmembersId',
-  ProjectMembersController.delete
-);
+router.delete('/projectmembers/:project_id', ProjectMembersController.delete);
 
 export default router;
