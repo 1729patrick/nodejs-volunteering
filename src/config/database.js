@@ -1,19 +1,15 @@
-// import { resolve } from 'path';
+if (process.env.NODE_ENV === 'test') {
+  require('dotenv').config('../../.env.test');
+}
 
-// export default {
-//   client: 'sqlite3',
-//   connection: () => ({
-//     filename: resolve('src', 'database', process.env.SQLITE_FILENAME),
-//   }),
-//   useNullAsDefault: true,
-// };
-
-export default {
+const config = {
   client: 'pg',
   connection: {
     host: '127.0.0.1',
     user: 'postgres',
     password: process.env.PASSWORD,
-    database: 'volunteering',
+    database: process.env.DB_NAME,
   },
 };
+
+export default config;

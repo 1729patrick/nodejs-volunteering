@@ -9,7 +9,7 @@ class Model {
   }
 
   async getMetadata(model_ = this.model) {
-    return new Promise(async resolve => {
+    return new Promise(async (resolve) => {
       const model = {};
       const relations = [];
 
@@ -51,10 +51,7 @@ class Model {
   }
 
   delete(condition) {
-    return this.table
-      .delete()
-      .where(condition)
-      .del();
+    return this.table.delete().where(condition).del();
   }
 
   async update({ id }, newModel) {
@@ -72,10 +69,7 @@ class Model {
   }
 
   findBy(condition) {
-    return database
-      .select()
-      .where(condition)
-      .from(this.tableName);
+    return database.select().where(condition).from(this.tableName);
   }
 
   async findAll(join) {

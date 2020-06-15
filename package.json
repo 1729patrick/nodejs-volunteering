@@ -3,12 +3,14 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon server.js"
+    "start": "nodemon server.js",
+    "test": "jest"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@sucrase/jest-plugin": "^2.0.0",
     "cors": "^2.8.5",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
@@ -19,7 +21,14 @@
     "sqlite3": "^4.2.0"
   },
   "devDependencies": {
+    "@types/jest": "^26.0.0",
+    "jest": "^26.0.1",
     "nodemon": "^2.0.2",
     "sucrase": "^3.12.1"
+  },
+  "jest": {
+    "transform": {
+      ".(js|jsx|ts|tsx)": "@sucrase/jest-plugin"
+    }
   }
 }
