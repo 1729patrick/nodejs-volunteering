@@ -6,7 +6,8 @@
 -- Database: volunteering
 -- Generation Time: 2020-06-07 14:37:57.6170
 -- -------------------------------------------------------------
-CREATE DATABASE IF NOT EXISTS "volunteering";
+DROP DATABASE IF EXISTS "volunteering";
+CREATE DATABASE "volunteering"
 
 DROP TABLE IF EXISTS "public"."Companies";
 -- This script only contains the table creation statements and does not fully represent the table in the database. It's still missing: indices, triggers. Do not use it as a backup.
