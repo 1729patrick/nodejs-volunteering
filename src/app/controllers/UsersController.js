@@ -3,13 +3,18 @@ import authConfig from '../../config/auth';
 import Users from '../models/Users';
 
 class UsersController {
-  async index(_, res) {
+  async index(req, res) {
     const users_ = new Users();
 
     const users = await users_.findAll();
     const columns = users_.columns;
 
-    return res.json({ columns, users });
+    return res.json({
+      columns,
+      users: users
+        .filter(({ id }) => id !== req.userId)
+        .map(({ password, ...user }) => user),
+    });
   }
 
   async store(req, res) {
@@ -18,7 +23,10 @@ class UsersController {
         return res.status(400).json({ error: 'Invalid parameters' });
       }
 
-      const [id] = await new Users({ ...req.body, is_admin: false }).insert();
+      const [id] = await new Users({
+        ...req.body,
+        is_admin: req.userId && req.body.is_admin,
+      }).insert();
 
       const [user] = await new Users().findBy({ id });
 
@@ -48,7 +56,10 @@ class UsersController {
         return res.status(400).json({ error: 'Invalid parameters' });
       }
 
-      const users = await new Users().update({ id: req.userId }, req.body);
+      const users = await new Users().update(
+        { id: req.params.userId || req.userId },
+        req.body
+      );
 
       return res.json(users);
     } catch ({ message }) {
@@ -58,9 +69,9 @@ class UsersController {
 
   async delete(req, res) {
     try {
-      const { usersId } = req.params;
+      const { userId } = req.params;
 
-      await new Users().delete({ id: usersId });
+      await new Users().delete({ id: userId });
 
       return res.send();
     } catch ({ message }) {

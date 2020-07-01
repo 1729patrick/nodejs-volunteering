@@ -9,6 +9,7 @@ import MotivationAreasRoutes from './motivationareas.routes';
 import VoluntaryAreasRoutes from './voluntaryareas.routes';
 import ImagesRoutes from './images.routes';
 import RankingRoutes from './ranking.routes';
+import UsersRoutes from './users.routes';
 
 export default [
   ImagesRoutes,
@@ -23,4 +24,5 @@ export default [
   UserMotivationAreasRoutes,
   UserMotivationAreasRoutes,
   RankingRoutes,
+  UsersRoutes,
 ];
