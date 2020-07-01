@@ -4,10 +4,10 @@ const router = Router();
 
 import ImagesController from '../../app/controllers/ImagesController';
 
-router.get('/images', ImagesController.index);
-router.get('/images/:imagesId', ImagesController.findOne);
-router.post('/images', ImagesController.store);
-router.put('/images/:imagesId', ImagesController.update);
-router.delete('/images/:imagesId', ImagesController.delete);
+router.get('/volunteering/images', ImagesController.index);
+router.get('/volunteering/images/:imagesId', ImagesController.findOne);
+router.post('/volunteering/images', ImagesController.store);
+router.put('/volunteering/images/:imagesId', ImagesController.update);
+router.delete('/volunteering/images/:imagesId', ImagesController.delete);
 
 export default router;

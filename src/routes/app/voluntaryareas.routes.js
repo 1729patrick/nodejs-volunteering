@@ -4,12 +4,12 @@ const router = Router();
 
 import VoluntaryAreasController from '../../app/controllers/VoluntaryAreasController';
 
-router.get('/voluntaryareas', VoluntaryAreasController.index);
+router.get('/volunteering/voluntaryareas', VoluntaryAreasController.index);
 router.get(
   '/voluntaryareas/:voluntaryareasId',
   VoluntaryAreasController.findOne
 );
-router.post('/voluntaryareas', VoluntaryAreasController.store);
+router.post('/volunteering/voluntaryareas', VoluntaryAreasController.store);
 router.put(
   '/voluntaryareas/:voluntaryareasId',
   VoluntaryAreasController.update

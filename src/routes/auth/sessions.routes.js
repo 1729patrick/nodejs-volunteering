@@ -4,6 +4,6 @@ const router = Router();
 
 import SessionController from '../../app/controllers/SessionController';
 
-router.post('/sessions', SessionController.store);
+router.post('/volunteering/sessions', SessionController.store);
 
 export default router;

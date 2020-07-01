@@ -4,12 +4,12 @@ const router = Router();
 
 import MotivationAreasController from '../../app/controllers/MotivationAreasController';
 
-router.get('/motivationareas', MotivationAreasController.index);
+router.get('/volunteering/motivationareas', MotivationAreasController.index);
 router.get(
   '/motivationareas/:motivationareasId',
   MotivationAreasController.findOne
 );
-router.post('/motivationareas', MotivationAreasController.store);
+router.post('/volunteering/motivationareas', MotivationAreasController.store);
 router.put(
   '/motivationareas/:motivationareasId',
   MotivationAreasController.update

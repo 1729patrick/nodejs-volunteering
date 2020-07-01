@@ -18,7 +18,7 @@ const {{name}}s = () => {
 
   useEffect(() => {
     const fetch{{name}}s = async () => {
-      const { data } = await api.get('/{{model}}s');
+      const { data } = await api.get('/volunteering/{{model}}s');
 
       set{{name}}s({ columns: getColumns(data.columns), data: data.{{model}}s });
     };
@@ -28,7 +28,7 @@ const {{name}}s = () => {
 
   const onRowAdd = async newData => {
     try {
-      const response = await api.post('/{{model}}s', newData);
+      const response = await api.post('/volunteering/{{model}}s', newData);
 
       set{{name}}s(prevState => {
         const data = [...prevState.data];
