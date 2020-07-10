@@ -30,7 +30,7 @@ test('projectMembers update', async () => {
 
     const [projectMUpdated] = await new ProjectMembers().findBy({ id });
 
-    expect(projectMUpdated.name).toBe('??');
+    expect(projectMUpdated.privacy).toBe('??');
 });
 
 test('projectMembers delete', async () => {
